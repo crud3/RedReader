@@ -27,6 +27,10 @@
                         android:key="@string/pref_behaviour_useinternalbrowser_key"
                         android:defaultValue="true"/>
 
+	<CheckBoxPreference android:title="@string/pref_behaviour_use_external_browser_twitter_title"
+						android:key="@string/pref_behaviour_use_external_browser_twitter_key"
+						android:defaultValue="false"/>
+
 	<CheckBoxPreference android:title="@string/pref_behaviour_usecustomtabs_title"
                         android:key="@string/pref_behaviour_usecustomtabs_key"
                         android:summary="@string/pref_behaviour_usecustomtabs_summary"

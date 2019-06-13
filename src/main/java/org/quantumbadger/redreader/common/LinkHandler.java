@@ -57,7 +57,9 @@ public class LinkHandler {
 			youtubeDotComPattern = Pattern.compile("^https?://[\\.\\w]*youtube\\.\\w+/.*"),
 			youtuDotBePattern = Pattern.compile("^https?://[\\.\\w]*youtu\\.be/([A-Za-z0-9\\-_]+)(\\?.*|).*"),
 			vimeoPattern = Pattern.compile("^https?://[\\.\\w]*vimeo\\.\\w+/.*"),
-			googlePlayPattern = Pattern.compile("^https?://[\\.\\w]*play\\.google\\.\\w+/.*");
+			googlePlayPattern = Pattern.compile("^https?://[\\.\\w]*play\\.google\\.\\w+/.*"),
+			// TODO: just copied from youtubeDotComPattern, also add twitter short links etc.
+			twitterPattern = Pattern.compile("^https?://[\\.\\w]*twitter\\.\\w+/.*");
 
 	public enum LinkAction {
 		SHARE(R.string.action_share),
@@ -247,7 +249,9 @@ public class LinkHandler {
 
 		if(youtubeDotComPattern.matcher(url).matches()
 				|| vimeoPattern.matcher(url).matches()
-				|| googlePlayPattern.matcher(url).matches()) {
+				|| googlePlayPattern.matcher(url).matches()
+				|| (twitterPattern.matcher(url).matches()
+				&& PrefsUtility.pref_behaviour_use_external_browser_twitter(activity, sharedPreferences))) {
 			if(openWebBrowser(activity, Uri.parse(url), fromExternalIntent)) {
 				return;
 			}
